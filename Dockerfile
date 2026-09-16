@@ -2,10 +2,11 @@ FROM python:3.14-slim
 
 WORKDIR /app
 
-# System libs OpenCV needs that aren't in slim images
+# System libs OpenCV and MediaPipe need that aren't in slim images
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \
+    libegl1 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
